@@ -1,0 +1,3 @@
+Memory Match Game
+
+This is a game to use and test your memory! There are two sets of 8 cards, so 16 cards total, comprising 8 pairs to find and match. The game times how long it takes to finish your play, counts your moves and will present a star rating on your based on time taken and moves made..  Clicking a card reveals a symbol and if the next card clicked has a matching symbol the cards will remain face up. Otherwise, they return to face-down position.  Each time you restart and play the game again, the deck will re-shuffle and all the cards will be in new positions.

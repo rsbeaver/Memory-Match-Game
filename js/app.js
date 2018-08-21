@@ -1,4 +1,5 @@
-$(function() {
+// Create card deck, set initial params
+$(function () {
 	let allCardsOrg = [
 		'fa fa-diamond',
 		'fa fa-paper-plane-o',
@@ -23,9 +24,9 @@ $(function() {
 	let count = 0;
 	let stars = $('.stars');
 	const modal = document.getElementById('myModal');
-	const span = document.getElementsByClassName('close')[0];
-	//to HTML
-	allCards.forEach(function(item) {
+	const span = document.getElementsByClassName('close')[0]
+//to HTML
+	allCards.forEach(function (item) {
 		const liElement = createLiElement(item);
 		$(deck).append(liElement);
 		$('li').addClass('open');
@@ -39,8 +40,8 @@ $(function() {
 		$(iEl).addClass(cssClass);
 		$(liEl).append(iEl);
 
-		$(liEl).click(function(e) {
-			// prevent dblclick issue
+		$(liEl).click(function (e) {
+// prevent dblclick issue
 			if ($(liEl).hasClass('show') && !$(liEl).hasClass()) {
 				setInterval(onClick, 350);
 			}
@@ -48,14 +49,14 @@ $(function() {
 				handleCardOnClick(this);
 				updateStarsScore();
 				checkIfWinner();
-        modalMessage();
+				modalMessage();
 			}
 		});
 		return liEl;
 	}
-	// remember that clickedCard is "this".
+// remember that clickedCard is "this".
 	function handleCardOnClick(clickedCard) {
-		// keep track of what cards have been clicked
+// keep track of what cards have been clicked
 		console.log(clickedCard);
 
 		$(clickedCard).addClass('show');
@@ -64,10 +65,10 @@ $(function() {
 		if (clickedCards.length > 1) {
 			count++;
 
-			$('span.moves').html(function() {
+			$('span.moves').html(function () {
 				return count;
 			});
-			//match or not
+//match or not
 			if (
 				$(clickedCards[0]).find('i').attr('class') ===
 				$(clickedCards[1]).find('i').attr('class')
@@ -76,7 +77,7 @@ $(function() {
 				$('li').removeClass('show');
 				clickedCards = [];
 			} else {
-				setTimeout(function() {
+				setTimeout(function () {
 					$('li').removeClass('show');
 					clickedCards = [];
 				}, 350);
@@ -92,30 +93,30 @@ $(function() {
 			$(stars[1]).css('color', 'rgb(117, 148, 229)');
 		}
 	}
-  function modalMessage(){
-	let time = $('h1.clock').html();
-	let starScore = $('.score-panel .stars').html();
-	$('div.modal-content p').html(function() {
-		return (
-			'Hooray...You WON! ' +
-			`Your star level is <div class="score-panel"><ul class="stars">${starScore} </ul><div>` +
-			`and your time was <h1 class="clock">${time}</h1> ` +
+	function modalMessage() {
+		let time = $('h1.clock').html();
+		let starScore = $('.score-panel .stars').html();
+		$('div.modal-content p').html(function () {
+			return (
+				'Hooray...You WON! ' +
+				`Your star level is <div class="score-panel"><ul class="stars">${starScore} </ul><div>` +
+				`and your time was <h1 class="clock">${time}</h1> ` +
 
-			'Want to try again?  Click the yellow X above to start again.'
-	  );
-	 });
-  }
-	
-	$('.restart').click(function(e) {
+				'Want to try again?  Click the yellow X above to start again.'
+			);
+		});
+	}
+
+	$('.restart').click(function (e) {
 		location.reload(this);
 	});
 
-	/*modal JS from W3Schools.com*/
-	span.onclick = function() {
+/*modal JS from W3Schools.com*/
+	span.onclick = function () {
 		modal.style.display = 'none';
 		location.reload(clickedCards);
 	};
-	window.onclick = function(event) {
+	window.onclick = function (event) {
 		if (event.target == modal) {
 			modal.style.display = 'none';
 		}
@@ -127,7 +128,7 @@ $(function() {
 			modal.style.display = 'block';
 		}
 	}
-
+// Create clock-timer
 	let h1 = $('.clock').get(0);
 	let seconds = 0;
 	let minutes = 0;
@@ -143,7 +144,7 @@ $(function() {
 				hours++;
 			}
 		}
-
+// Set text style for clock
 		h1.textContent =
 			(hours ? (hours > 9 ? hours : '0' + hours) : '00') +
 			':' +
@@ -153,7 +154,7 @@ $(function() {
 	}
 	t = setInterval(add, 1000);
 
-	// Shuffle function from http://stackoverflow.com/a/2450976
+// Shuffle function from http://stackoverflow.com/a/2450976
 	function shuffle(array) {
 		var currentIndex = array.length,
 			temporaryValue,
